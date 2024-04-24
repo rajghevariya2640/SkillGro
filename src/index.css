@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply text-txtBlue;
+}
+
+body {
+  @apply overflow-x-hidden font-inter;
+}
+#root{
+  @apply overflow-x-hidden;
+}
+a{
+  @apply block;
+}
+img{
+  @apply w-full h-auto object-cover;
+}
+
+.banner-main {
+  clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 100%);
+}
