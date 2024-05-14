@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Shape1 from "../../assets/image/png/banner-purple-shape.png";
+import Shape1 from "../../assets/image/png/banner-round-shape.png";
 import Course1 from "../../assets/image/png/course-1.png";
 import Course10 from "../../assets/image/png/course-10.png";
 import Course11 from "../../assets/image/png/course-11.png";
@@ -26,9 +26,10 @@ import {
 import SGButton from "../../shared/SGButton";
 import SGContainer from "../../shared/SGContainer";
 import SGSubHead from "../../shared/SGSubHead";
+import SGCourseCard from "../../shared/SGCourseCard";
 
 const BestCourse = () => {
-  const courseCard = [
+  const courseCard1 = [
     {
       image: Course1,
       chipLabel: "Development",
@@ -124,6 +125,8 @@ const BestCourse = () => {
         },
       ],
     },
+  ];
+  const courseCard2 = [
     {
       image: Course5,
       chipLabel: "Data Science",
@@ -314,51 +317,50 @@ const BestCourse = () => {
   const filterBtn = [
     {
       label: "All courses",
-      id: '1'
+      id: "1",
     },
     {
       label: "design",
-      id: '2'
+      id: "2",
     },
     {
       label: "business",
-      id: '3'
+      id: "3",
     },
     {
       label: "development",
-      id: '4'
+      id: "4",
     },
   ];
 
   // Slice
-  const initialVisibleBoxes = courseCard.slice(0, 4);
+  // const initialVisibleBoxes = courseCard.slice(0, 4);
 
-  const [card, setVisibleBoxes] = useState(initialVisibleBoxes);
+  const [card, setVisibleBoxes] = useState(courseCard1);
   const [showAll, setShowAll] = useState(false);
 
   const handleSeeAllClick = () => {
-    setVisibleBoxes(courseCard);
+    setVisibleBoxes([...card, ...courseCard2]);
     setShowAll(true);
   };
 
   const handleShowLessClick = () => {
-    setVisibleBoxes(initialVisibleBoxes);
+    setVisibleBoxes(courseCard1);
     setShowAll(false);
   };
 
-
   // Highlight the button
-    const [highlightedButton, setHighlightedButton] = useState(filterBtn[0].id);
-    const handleButtonClick = (buttonId) => {
-        if (highlightedButton === buttonId) {
-            setHighlightedButton(null);
-        } else {
-            setHighlightedButton(buttonId);
-        }
-    };
+  const [highlightedButton, setHighlightedButton] = useState(filterBtn[0].id);
+  const handleButtonClick = (buttonId) => {
+    if (highlightedButton === buttonId) {
+      setHighlightedButton(null);
+    } else {
+      setHighlightedButton(buttonId);
+    }
+  };
 
   return (
-    <div className="bg-[#f7f6f9] py-[120px] overflow-hidden relative">
+    <div className="bg-[#f7f6f9] py-[50px] sm:py-[60px] md:py-20 lg:py-[120px] overflow-hidden relative">
       <div className="absolute top-1/2 translate-y-[-50%] left-0 translate-x-[-50%] scale-150  hue-rotate-[45deg] opacity-90 select-none">
         <img src={Shape1} alt="" />
       </div>
@@ -376,75 +378,40 @@ const BestCourse = () => {
         <div className="filter-button-group flex justify-center mt-[50px] gap-x-4 relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:h-1 after:w-6/12 after:bg-primaryLight100 rounded-lg">
           {filterBtn?.map((btn) => {
             return (
-              <button key={btn.id} className={`text-grey50 pb-[17px] relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:h-1.5 after:bg-primary after:rounded-xl after:z-10 after:translate-y-[1px] after:duration-200 ${highlightedButton === btn.id ? '!text-black after:w-[60px]' : ''}`}
-                    onClick={() => handleButtonClick(btn.id)}>
+              <button
+                key={btn.id}
+                className={`text-grey50 pb-[17px] relative after:content-[''] duration-200 after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:h-1.5 after:bg-primary after:rounded-xl after:z-10 after:translate-y-[1px] after:duration-200 ${
+                  highlightedButton === btn.id
+                    ? "!text-black after:w-[60px]"
+                    : ""
+                }`}
+                onClick={() => handleButtonClick(btn.id)}
+              >
                 {btn?.label}
               </button>
             );
           })}
         </div>
-
-        <div className="flex flex-wrap gap-[30px] mt-[50px]">
+        <div className="flex flex-wrap gap-y-4 sm:gap-y-[30px] mt-[50px]">
           {card?.map((card, cardIndex) => {
             return (
               <div
-                className={`w-[calc(25%-22.5px)] ${card?.category || ""}`}
+                className={`w-full sm:w-6/12 md:w-4/12 xl:w-3/12 sm:px-3 ${
+                  card?.category || ""
+                }`}
                 key={cardIndex}
               >
-                <div className="px-[26px] pt-[26px] pb-[20px] bg-white rounded-t-[10px] border border-grey600">
-                  <div className="w-full h-[190px] overflow-hidden rounded-md">
-                    <img src={card?.image} alt="" className=" h-full" />
-                  </div>
-                  <div className="mt-[22px] flex items-center justify-between">
-                    <p className="bg-grey400 px-[13px] py-[7px] text-[13px] rounded-full inline-block leading-none">
-                      {card?.chipLabel}
-                    </p>
-                    <div className="flex items-center gap-x-2">
-                      {card.originalPrice && (
-                        <strike className="text-sm text-grey500 leading-[24px]">
-                          {card?.originalPrice}
-                        </strike>
-                      )}
-                      <p className="text-primary text-lg font-semibold leading-[31px]">
-                        {card?.salePrice}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-lg font-semibold leading-[25px] font-poppins mt-[17px]">
-                    {card?.heading}
-                  </p>
-                  <div className="flex items-center justify-between mt-[15px]">
-                    <div className="flex items-center gap-x-2.5">
-                      <div className="h-8 w-8 rounded-full">
-                        <img src={card?.userImage} alt="" />
-                      </div>
-                      <p className="text-grey300 text-[15px] leading-[25px] capitalize">
-                        {card?.user}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-x-2">
-                      <YellowStar />
-                      <p className="text-grey500 text-sm leading-none">
-                        {`(${card?.rating} Reviews)`}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="px-[26px] py-[18px] bg-white rounded-b-[10px] border-l border-r border-b border-grey600 flex items-center gap-x-[30px]">
-                  {card.etc?.map((etc, etcIndex) => {
-                    return (
-                      <div
-                        className="flex items-center gap-2 relative last:after:hidden after:content-[''] after:absolute after:top-1/2 after:right-[-15px] after:translate-x-[50%] after:translate-y-[-50%] after:h-[5px] after:w-[5px] after:bg-grey700 after:rounded-2xl"
-                        key={etcIndex}
-                      >
-                        {etc?.icon}
-                        <p className="text-blue100 leading-[28px]">
-                          {etc?.label}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
+                <SGCourseCard
+                  image={card.image}
+                  salePrice={card.salePrice}
+                  originalPrice={card.originalPrice}
+                  chipLabel={card.chipLabel}
+                  heading={card.heading}
+                  user={card.user}
+                  userImage={card.userImage}
+                  lowerRating={card.rating}
+                  etc={card.etc}
+                />
               </div>
             );
           })}
@@ -455,7 +422,7 @@ const BestCourse = () => {
             <SGButton
               onClick={handleSeeAllClick}
               variant="primary"
-              className="py-[17px] px-[30px] shadow-[4px_6px_0] shadow-[#050071] flex items-center gap-x-2.5 max-h-[50px] mx-auto mt-[60px]"
+              className="mx-auto mt-[60px]"
             >
               See All Courses
               <RightLongArrow />
@@ -464,7 +431,7 @@ const BestCourse = () => {
             <SGButton
               onClick={handleShowLessClick}
               variant="primary"
-              className="py-[17px] px-[30px] shadow-[4px_6px_0] shadow-[#050071] flex items-center gap-x-2.5 max-h-[50px] mx-auto mt-[60px]"
+              className="mx-auto mt-[60px]"
             >
               Show Less Courses
               <RightLongArrow />

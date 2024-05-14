@@ -22,11 +22,11 @@ const MoreAboutUs = () => {
   ];
 
   return (
-    <div className="pb-[120px]">
+    <div className="py-[50px] sm:pt-0 sm:pb-[60px] md:pb-20 lg:pb-[120px]">
       <SGContainer>
-        <div className="flex gap-[100px]">
-          <div className="w-6/12">
-            <div className="w-full max-w-[450px] h-[562px] shadow-[9px_8px_0px] relative shadow-[#B8B8B8] rounded-full bg-[#F3F3F3] overflow-hidden mx-auto">
+        <div className="flex gap-[30px] lg:gap-[100px] flex-wrap md:flex-nowrap">
+          <div className="w-full md:w-6/12">
+            <div className="w-full max-w-[450px] h-[450px] xs:h-[525px] lg:h-[562px] shadow-[9px_8px_0px] relative shadow-[#B8B8B8] rounded-full bg-[#F3F3F3] overflow-hidden mx-auto">
               <div className="absolute bottom-0 left-1/2 translate-x-[-50%] w-full max-w-[370px] z-[1]">
                 <img src={Man} alt="" />
               </div>
@@ -38,17 +38,17 @@ const MoreAboutUs = () => {
               </div>
             </div>
           </div>
-          <div className="w-6/12">
+          <div className="w-full md:w-6/12">
             <SGSubHead
-              mainClass="max-w-[501px]"
+              mainClass="md:max-w-[501px]"
               chipText="Get More About Us"
               mainHeading={
                 <>
                   {" "}
                   Thousand Of Top
-                  <span className="text-white relative ms-5">
+                  <span className="text-white relative mx-3 inline-block">
                     Courses
-                    <div className="absolute top-1 left-0 w-[180px] h-[59px] translate-x-[-15px] z-[-1]">
+                    <div className="absolute -translate-y-1/2 top-1/2 left-0 w-full scale-110 z-[-1]">
                       <img src={TextShape} alt="" />
                     </div>
                   </span>
@@ -62,10 +62,10 @@ const MoreAboutUs = () => {
             <div className="flex flex-col gap-y-4 mt-[22px]">
               {iconList.map((list, listIndex) => {
                 return (
-                  <div className="flex items-center gap-x-[13px]">
+                  <div className="flex items-center gap-x-[13px]" key={listIndex}>
                     <SGButton
                       variant="secondary"
-                      className="w-[30px] h-[30px] flex items-center justify-center shadow-[4px_3px_0_rgba(0,0,0,25%)]  border-txtBlue"
+                      className="!min-w-[30px] h-[30px] flex items-center justify-center !shadow-[4px_3px_0_rgba(0,0,0,25%)]  border-txtBlue"
                     >
                       <RightArrow />
                     </SGButton>

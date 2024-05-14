@@ -10,16 +10,38 @@
 body {
   @apply overflow-x-hidden font-inter;
 }
-#root{
+#root {
   @apply overflow-x-hidden;
 }
-a{
+a {
   @apply block;
 }
-img{
+img {
   @apply w-full h-auto object-cover;
 }
 
 .banner-main {
   clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 100%);
+}
+
+.bread-crumb:last-child svg {
+  @apply hidden;
+}
+
+.customCheckbox:checked + label .bg-primary {
+  @apply scale-100;
+}
+.customCheckbox:checked + label .border {
+  @apply border-primary;
+}
+
+.pagination li a {
+  @apply h-[35px] md:h-[50px] w-[35px] md:w-[50px] rounded-full flex items-center justify-center bg-grey1600 cursor-pointer text-sm md:text-base;
+}
+.pagination li.previous,
+.pagination li.next {
+  @apply hidden;
+}
+.pagination li.selected a {
+  @apply bg-primary text-white;
 }
