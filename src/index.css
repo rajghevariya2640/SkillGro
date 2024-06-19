@@ -14,7 +14,10 @@ body {
   @apply overflow-x-hidden;
 }
 a {
-  @apply block;
+  @apply block focus:outline-none;
+}
+button {
+  @apply focus:outline-none;
 }
 img {
   @apply w-full h-auto object-cover;
@@ -45,3 +48,17 @@ img {
 .pagination li.selected a {
   @apply bg-primary text-white;
 }
+
+/* .demo1:hover ~ div {
+  @apply bg-red-700;
+}
+
+.text {
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.1);
+  background-image: linear-gradient(#000, #fff);
+  position: relative;
+  background-repeat: no-repeat;
+  display: inline;
+  -webkit-background-clip: text;
+  background-size: 10% 100%;
+} */

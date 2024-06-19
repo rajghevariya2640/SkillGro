@@ -1,12 +1,13 @@
 import React from "react";
-import SGContainer from "../../shared/SGContainer";
-import SGSubHead from "../../shared/SGSubHead";
 import TextShape from "../../assets/image/png/banner-text-shape.png";
-import SGButton from "../../shared/SGButton";
-import { RightArrow, RightLongArrow } from "../../assets/image/svg/Icon";
 import Man from "../../assets/image/png/more-abt-img.png";
 import Shape1 from "../../assets/image/png/more-abt-shape1.png";
 import Shape2 from "../../assets/image/png/more-abt-shape2.png";
+import { RightLongArrow } from "../../assets/image/svg/Icon";
+import SGButton from "../../shared/SGButton";
+import SGContainer from "../../shared/SGContainer";
+import SGList from "../../shared/SGList";
+import SGSubHead from "../../shared/SGSubHead";
 
 const MoreAboutUs = () => {
   const iconList = [
@@ -59,23 +60,9 @@ const MoreAboutUs = () => {
                             organize, prioritize and.In this episode of the Smashing Pod we’re
                             talking about Web Platform Baseline."
             />
-            <div className="flex flex-col gap-y-4 mt-[22px]">
-              {iconList.map((list, listIndex) => {
-                return (
-                  <div className="flex items-center gap-x-[13px]" key={listIndex}>
-                    <SGButton
-                      variant="secondary"
-                      className="!min-w-[30px] h-[30px] flex items-center justify-center !shadow-[4px_3px_0_rgba(0,0,0,25%)]  border-txtBlue"
-                    >
-                      <RightArrow />
-                    </SGButton>
-                    <p className="text-lg leading-[31px] font-semibold font-poppins">
-                      {list?.label}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
+            {iconList.map((list, listIndex) => {
+              return <SGList key={listIndex} label={list.label} />;
+            })}
             <SGButton
               variant="primary"
               className="py-4 px-[30px] shadow-[4px_6px_0] mt-10 shadow-[#050071] flex items-center gap-x-2.5 max-h-[50px]"

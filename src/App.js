@@ -5,11 +5,31 @@ import SGButton from "./shared/SGButton";
 import { DownArrow } from "./assets/image/svg/Icon";
 import ScrollEffect from "./shared/ScrollEffect";
 import Footer from "./shared/Footer";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import AllCourse from "./pages/AllCourse";
 import PageLayout from "./shared/PageLayout";
 import SingleCourse from "./pages/SingleCourse";
 import NotFound from "./shared/NotFound";
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const scrollOptions = {
+      top: 0,
+      behavior: "smooth",
+    };
+    window.scrollTo(scrollOptions);
+  }, [pathname]);
+
+  return null;
+};
 
 function App() {
   // scroll to top button
@@ -46,6 +66,7 @@ function App() {
       </div>
       <BrowserRouter>
         <Header />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/all-course" element={<PageLayout />}>

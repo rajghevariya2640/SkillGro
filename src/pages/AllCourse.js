@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import SGContainer from "../shared/SGContainer";
-import SGCourseCard from "../shared/SGCourseCard";
-import SGFilterBox from "../shared/SGFilterBox";
+import ReactPaginate from "react-paginate";
 import Course1 from "../assets/image/png/course-1.png";
 import Course10 from "../assets/image/png/course-10.png";
 import Course11 from "../assets/image/png/course-11.png";
@@ -16,7 +13,9 @@ import Course7 from "../assets/image/png/course-7.png";
 import Course8 from "../assets/image/png/course-8.png";
 import Course9 from "../assets/image/png/course-9.png";
 import { DownArrow, FourBox, MenuIcon } from "../assets/image/svg/Icon";
-import ReactPaginate from "react-paginate";
+import SGContainer from "../shared/SGContainer";
+import SGCourseCard from "../shared/SGCourseCard";
+import SGFilterBox from "../shared/SGFilterBox";
 
 const AllCourse = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(null);
@@ -203,8 +202,6 @@ const AllCourse = () => {
     },
   ];
 
-  // const { filteredProducts } = useFilter(selectedRatings);
-
   return (
     <div>
       <SGContainer>
@@ -282,6 +279,7 @@ const AllCourse = () => {
             </div>
           </div>
         </div>
+        <div>{/* <span className="text">lorem1000</span> */}</div>
       </SGContainer>
     </div>
   );

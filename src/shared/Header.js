@@ -16,8 +16,9 @@ const Header = () => {
   const [isSticky, setSticky] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
-      const offset = window.scrollY;
+      const offset = window.scrollX;
       setSticky(offset > 99);
+      console.log(offset);
     };
     window.addEventListener("scroll", handleScroll);
     return () => {
